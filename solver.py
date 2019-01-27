@@ -1,13 +1,16 @@
+import treeGen,numpy
 #solver for the puzzle
 heuristics = ["manDistance","tOOP","custom"] #the heuristcs for best first search
 
 
 #runs all solvers
 def all(puzzle):
-    breadthFirst(puzzle)
-    aStar(puzzle)
-    for x in heuristics:
-        bestFirst(puzzle,x)
+    print(puzzle)
+    thisTree = treeGen.generateTree(puzzle)
+    # breadthFirst(thisTree)
+    # aStar(thisTree)
+    # for x in heuristics:
+    #     bestFirst(thisTree,x)
 
 def breadthFirst(puzzle):
     print(puzzle)
@@ -19,21 +22,13 @@ def bestFirst(puzzle,heur):
 def aStar(puzzle):
     print(puzzle)
 
-def move(position,direction):
-    print(position,direction)
 
-def moveUp(position):
-    swap(position,)
-    print("MoveUp")
+#the most we have to keep track of is 4 children
+def genChildren(puzzle):
+    print(puzzle)
 
-def moveDown(position):
-    print("Move Down")
+#this shouldnt be a problem to just brute force this.
 
-def moveRight(position):
-    print("Move Right")
-
-def moveLeft(position):
-    print("Move Left")
 
 #swap Position of two elements
 def swap(posA,posB):
