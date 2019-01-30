@@ -1,12 +1,13 @@
 from anytree import Node,RenderTree
+Root = ""
 
 def generateTree(puzzle):
-    root = Node(puzzle)
-    return root
+    global Root
+    Root = Node(puzzle)
+    return Root
 
 def addNode(node,parent):
     Node(node,parent=parent)
 
-def generateChildren(parent):
-    print(parent)
-
+def getRoot():
+    return Root

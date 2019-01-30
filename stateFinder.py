@@ -3,14 +3,17 @@ import treeGen
 states = set()
 def mover(puzzle,parent):
     global states
-    #lets get the index of the zero
+    #some checks
     if not isinstance(puzzle,list):
         puzzle = puzzle.split()
     if len(states) > 0:
         states = set()
+
+    #lets get the index of the zero
     zeroLocation = getZero(puzzle)
+
     #move the zero
-    moveLeft(puzzle[:],zeroLocation) #this should pass it a new list, that is a copy of the old list
+    moveLeft(puzzle[:],zeroLocation)
     moveRight(puzzle[:],zeroLocation)
     moveUp(puzzle[:],zeroLocation)
     moveDown(puzzle[:],zeroLocation)
