@@ -24,11 +24,8 @@ def aStar(puzzle):
     print(puzzle)
 
 
-#the most we have to keep track of is 4 children
-def genChildren(puzzle):
-    print(puzzle)
 
-#this shouldnt be a problem to just brute force this.
+
 
 
 #swap Position of two elements

@@ -8,3 +8,6 @@ def generateTree(puzzle):
 def addNode(node,parent):
     Node(node,parent=parent)
 
+def generateChildren(parent):
+    print(parent)
+
