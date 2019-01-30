@@ -1,19 +1,23 @@
 #moves the puzzle,creating children of the parent
-def mover(puzzle):
-    states = set()
+import treeGen
+states = set()
+def mover(puzzle,parent):
+    global states
     #lets get the index of the zero
+    if not isinstance(puzzle,list):
+        puzzle = puzzle.split()
+    if len(states) > 0:
+        states = set()
     zeroLocation = getZero(puzzle)
-    # print(zeroLocation)
-    # print(zeroLocation%3)
-    # print(puzzle)
+    #move the zero
     moveLeft(puzzle[:],zeroLocation) #this should pass it a new list, that is a copy of the old list
-    # print(puzzle)
     moveRight(puzzle[:],zeroLocation)
-    # print(puzzle)
     moveUp(puzzle[:],zeroLocation)
-    # print(puzzle)
     moveDown(puzzle[:],zeroLocation)
-    # print(puzzle)
+    print(states)
+
+    for x in states:
+        treeGen.addNode(x,parent)
 
 def getZero(puzzle):
     return puzzle.index('0')
@@ -22,16 +26,16 @@ def getZero(puzzle):
 def moveLeft(puzzle,zeroLocation):
     if not zeroLocation % 3 == 0:
         puzzle[zeroLocation],puzzle[zeroLocation -1] = puzzle[zeroLocation-1],puzzle[zeroLocation]
-    print("mL:",puzzle)
+        states.add(''.join(puzzle))
 def moveRight(puzzle,zeroLocation):
     if not zeroLocation % 3 == 2:
         puzzle[zeroLocation],puzzle[zeroLocation +1] = puzzle[zeroLocation+1],puzzle[zeroLocation]
-    print("mR:",puzzle)
+        states.add(''.join(puzzle))
 def moveUp(puzzle,zeroLocation):
     if not zeroLocation < 3:
         puzzle[zeroLocation],puzzle[zeroLocation -3] = puzzle[zeroLocation-3],puzzle[zeroLocation]
-    print("mU:",puzzle)
+        states.add(''.join(puzzle))
 def moveDown(puzzle,zeroLocation):
     if not zeroLocation >= 6:
         puzzle[zeroLocation],puzzle[zeroLocation +3] = puzzle[zeroLocation+3],puzzle[zeroLocation]
-    print("mD:",puzzle)
+        states.add(''.join(puzzle))

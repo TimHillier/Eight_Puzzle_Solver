@@ -1,5 +1,6 @@
 #Assignment 1 for AI
-import solver,stateFinder
+import solver,stateFinder,treeGen
+from anytree import RenderTree
 import numpy as np
 
 def main():
@@ -11,9 +12,8 @@ def getPuzzle(fileName):
         #get the puzzle and turn it into a list
         content = f.readline().split()
         while content:
-            print("CP:",content)
-            stateFinder.mover(content)
+            root = treeGen.generateTree(''.join(content))
+            stateFinder.mover(content,root)
             content = f.readline().split()
-            print("__________________________________________________")
-
+            print(RenderTree(root))
 main()
