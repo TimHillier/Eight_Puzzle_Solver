@@ -1,20 +1,21 @@
 import treeGen,stateFinder
+import ephem,time
 from anytree import RenderTree,Node,PreOrderIter
 from queue import *
 #solver for the puzzle
-# heuristics = ["Mann","tOOP","custom"] #the heuristcs for best first search
-heuristics = ["TOOP"]
-
+heuristics = ["Mann","TOOP"] #the heuristcs for best first search
+# heuristics.append("Custom") #uncomment this if you want to do the custom search,
 #runs all solvers
 def all(puzzle,parent,goal):
     thisTree = stateFinder.mover(puzzle, parent,True)
     # print("Breath First:--------------------")
     # breadFirst(thisTree, treeGen.getRoot(),goal) # this works
-    # aStar(thisTree)
-    print("Best First:----------------------")
-    for x in heuristics:
-        print("----------",x,"----------------------------")
-        bestFirst(thisTree,treeGen.getRoot(),x,goal)
+    print("A Star------------------------------")
+    aStar(thisTree)
+    # print("Best First:----------------------")
+    # for x in heuristics:
+    #     print("----------",x,"----------------------------")
+    #     bestFirst(thisTree,treeGen.getRoot(),x,goal)
 
 
 def breadFirst(BaseTree,rootNode,goal): #some whole wheat action
@@ -119,9 +120,44 @@ def calcHeuristic(listofnodes,heur):
 
         return bestNode
 
+    #moves randomly based on the position of a Mercury
+    elif heur == "Custom":
+        planet = ephem.Mercury()
+        planet.compute()
+        c = str(planet.ra) + str(planet.dec)
+        c = c.replace(':','')
+        c = c.replace('.','')
+        c = c.replace('-','')
+        c = int(c) % len(listofnodes)
+        return listofnodes[c]
 
-def aStar(puzzle):
-    print(puzzle)
+
+
+def aStar(puzzle,rootNode,goal):
+    open_list = [rootNode]
+    closed_list = set()
+    currentNode = ''
+
+    while open_list:
+        lowest_fcost = 9999999
+        for n in open_list:
+            if n.FCOST < lowest_fcost:
+                lowest_fcost = n.FCOST
+                currentNode = n
+
+        open_list.remove(currentNode)
+        closed_list.add(currentNode)
+
+        if currentNode.name == ''.join(goal):
+            print("YAAY!,you found the goal. Steps: ", currentNode.depth, ". You visited ", len(closed_list), " Nodes")
+            backTrack()
+
+        children = generateChildren(currentNode,False)
+
+        for ch in children:
+            if ch in closed_list:
+                break
+            ch.
 
 
 def generateChildren(currentParent,check):
@@ -138,4 +174,9 @@ def getName(node):
         return node.name
     else:
         getName(node.name)
+
+
+# def Get_Path(CameFrom,current):
+#     total_path = current
+#     while current
 

@@ -30,7 +30,7 @@ def mover(puzzle,parent,checker):
     if not checker:
         #only use in bread
         for x in states:
-            treeGen.addNode(x[:9],parent,x[-1:])
+            treeGen.addNode(x[:9],parent,x[-1:],0,0)
 
     elif checker:
         #should only go in here in best first
