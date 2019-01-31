@@ -1,4 +1,4 @@
-import treeGen,stateFinder
+import treeGen,stateFinder,output
 import ephem,time
 from anytree import RenderTree,Node,PreOrderIter
 from queue import *
@@ -8,13 +8,17 @@ heuristics = ["Mann","TOOP"] #the heuristcs for best first search
 #runs all solvers
 def all(puzzle,parent,goal):
     thisTree = stateFinder.mover(puzzle, parent,True)
-    print("Breath First:--------------------")
+    output.writeToFile("Breadth First:-----------------")
+    # print("Breath First:--------------------")
     breadFirst(thisTree, treeGen.getRoot(),goal) # this works
-    print("Best First:----------------------")
+    output.writeToFile("Best First:---------------")
+    # print("Best First:----------------------")
     for x in heuristics:
-        print("----------",x,"----------------------------")
+        output.writeToFile("----------" + x + "----------------------------\n")
+        # print("----------",x,"----------------------------")
         bestFirst(thisTree,treeGen.getRoot(),x,goal)
-    print("A Star------------------------------")
+    output.writeToFile("A Star------------------------------")
+    # print("A Star------------------------------")
     aStar(thisTree,treeGen.getRoot(),goal)
 
 
@@ -28,16 +32,20 @@ def breadFirst(BaseTree,rootNode,goal): #some whole wheat action
 
     while not q.empty():
         # print("Size Q:",q.qsize())
-        # print("Size vis",visited)
+        # print("Size vis",len(visited))
         v = q.get()
+        # print('v',v.name)
 
         #this means that we can skip it
-        if v.name in visited:
+        if v in visited:
             continue
-        visited.add(v.name.name)
+
+        visited.add(v.name)
 
         #if it is the goal we win
-        if v.name.name == ''.join(goal):
+        # print(v.name,''.join(goal))
+        if v.name == ''.join(goal):
+            addToFile(v.depth,len(visited)+1)
             print("YAY!,you found the goal. Steps: ",v.depth ,". You visited ",len(visited)," Nodes")
             break
         #add the current thing to the node
@@ -45,7 +53,8 @@ def breadFirst(BaseTree,rootNode,goal): #some whole wheat action
         # add the children nodes to the queue
         children = generateChildren(v,False)
         for ch in children:
-            if ch.name.name not in visited:
+            # if ch.name.name not in visited:
+            if ch.name not in visited:
                 q.put(ch)
 
 
@@ -64,6 +73,7 @@ def bestFirst(BaseTree,rootNode,heur,goal):
         # print(bestNode.name,''.join(goal))
 
         if bestNode.name == ''.join(goal):
+            addToFile(bestNode.depth,len(closed_List))
             print("YAY!,you found the goal. Steps: ",bestNode.depth ,". You visited ",len(closed_List)," Nodes")
             break
 
@@ -74,6 +84,7 @@ def bestFirst(BaseTree,rootNode,heur,goal):
         for ch in children:
             # print(ch.name,''.join(goal))
             if ch.name == ''.join(goal):
+                addToFile(ch.depth, len(closed_List)+1)
                 print("YAAY!,you found the goal. Steps: ",ch.depth ,". You visited ",len(closed_List)+1," Nodes")
                 condition = False
                 break
@@ -147,6 +158,7 @@ def aStar(puzzle,rootNode,goal):
         closed_list.add(currentNode.name)
 
         if currentNode.name == ''.join(goal):
+            addToFile(currentNode.depth,len(closed_list))
             print("YAAY!,you found the goal. Steps: ", currentNode.depth, ". You visited ", len(closed_list), " Nodes")
             condition = False
             # Get_Path(currentNode)
@@ -159,6 +171,7 @@ def aStar(puzzle,rootNode,goal):
             #     print("already checked",ch.name)
             #     break
             if ch.name == ''.join(goal):
+                addToFile(ch.depth,len(closed_list)+1)
                 print("YAAY!,you found the goal. Steps: ", ch.depth, ". You visited ", len(closed_list) + 1, " Nodes")
                 condition = False
                 break
@@ -193,6 +206,7 @@ def generateChildren(currentParent,check):
 
 def getName(node):
     if isinstance(node.name, str):
+        # print("name",node.name)
         return node.name
     else:
         getName(node.name)
@@ -202,3 +216,6 @@ def Get_Path(current):
     while current.parent:
         print(current.parent)
 
+
+def addToFile(depth,length):
+    output.writeToFile("YAAY!,you found the goal. Steps: "+ str(depth) + ". You visited "+ str(length) + " Nodes")

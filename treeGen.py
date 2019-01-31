@@ -14,7 +14,7 @@ def addNode(node,parent,move):
     if not isinstance(parent,Node):
         parent = Node(parent)
 
-    Node(node,parent=parent,MOVE=move,FCOST=node.depth,GCOST=node.depth,HCOST =0)
+    Node(node.name,parent=parent,MOVE=move,FCOST=node.depth,GCOST=node.depth,HCOST =0)
 
 
 def addNodeBest(node,parent,move):

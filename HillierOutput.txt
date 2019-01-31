@@ -1,0 +1,113 @@
+Tim Hiller
+230108884
+
+Current Puzzle:123456708
+Breadth First:-----------------
+YAAY!,you found the goal. Steps: 1. You visited 5 Nodes
+Best First:---------------
+----------Mann----------------------------
+
+YAAY!,you found the goal. Steps: 1. You visited 2 Nodes
+----------TOOP----------------------------
+
+YAAY!,you found the goal. Steps: 1. You visited 2 Nodes
+A Star------------------------------
+YAAY!,you found the goal. Steps: 1. You visited 2 Nodes
+Current Puzzle:837215406
+Breadth First:-----------------
+YAAY!,you found the goal. Steps: 19. You visited 31861 Nodes
+Best First:---------------
+----------Mann----------------------------
+
+YAAY!,you found the goal. Steps: 57. You visited 360 Nodes
+----------TOOP----------------------------
+
+YAAY!,you found the goal. Steps: 41. You visited 402 Nodes
+A Star------------------------------
+YAAY!,you found the goal. Steps: 19. You visited 3450 Nodes
+Current Puzzle:258103476
+Breadth First:-----------------
+YAAY!,you found the goal. Steps: 12. You visited 2216 Nodes
+Best First:---------------
+----------Mann----------------------------
+
+YAAY!,you found the goal. Steps: 34. You visited 99 Nodes
+----------TOOP----------------------------
+
+YAAY!,you found the goal. Steps: 18. You visited 263 Nodes
+A Star------------------------------
+YAAY!,you found the goal. Steps: 12. You visited 198 Nodes
+Current Puzzle:423718560
+Breadth First:-----------------
+YAAY!,you found the goal. Steps: 14. You visited 3683 Nodes
+Best First:---------------
+----------Mann----------------------------
+
+YAAY!,you found the goal. Steps: 40. You visited 307 Nodes
+----------TOOP----------------------------
+
+YAAY!,you found the goal. Steps: 34. You visited 646 Nodes
+A Star------------------------------
+YAAY!,you found the goal. Steps: 14. You visited 238 Nodes
+Current Puzzle:235146078
+Breadth First:-----------------
+YAAY!,you found the goal. Steps: 10. You visited 690 Nodes
+Best First:---------------
+----------Mann----------------------------
+
+YAAY!,you found the goal. Steps: 10. You visited 11 Nodes
+----------TOOP----------------------------
+
+YAAY!,you found the goal. Steps: 52. You visited 669 Nodes
+A Star------------------------------
+YAAY!,you found the goal. Steps: 10. You visited 49 Nodes
+Current Puzzle:236150784
+Breadth First:-----------------
+YAAY!,you found the goal. Steps: 11. You visited 926 Nodes
+Best First:---------------
+----------Mann----------------------------
+
+YAAY!,you found the goal. Steps: 15. You visited 40 Nodes
+----------TOOP----------------------------
+
+YAAY!,you found the goal. Steps: 15. You visited 213 Nodes
+A Star------------------------------
+YAAY!,you found the goal. Steps: 11. You visited 70 Nodes
+Current Puzzle:283105476
+Breadth First:-----------------
+YAAY!,you found the goal. Steps: 8. You visited 299 Nodes
+Best First:---------------
+----------Mann----------------------------
+
+YAAY!,you found the goal. Steps: 8. You visited 9 Nodes
+----------TOOP----------------------------
+
+YAAY!,you found the goal. Steps: 18. You visited 207 Nodes
+A Star------------------------------
+YAAY!,you found the goal. Steps: 8. You visited 29 Nodes
+Current Puzzle:136720548
+Breadth First:-----------------
+YAAY!,you found the goal. Steps: 9. You visited 487 Nodes
+Best First:---------------
+----------Mann----------------------------
+
+YAAY!,you found the goal. Steps: 9. You visited 10 Nodes
+----------TOOP----------------------------
+
+YAAY!,you found the goal. Steps: 9. You visited 14 Nodes
+A Star------------------------------
+YAAY!,you found the goal. Steps: 9. You visited 23 Nodes
+Current Puzzle:142305867
+Breadth First:-----------------
+YAAY!,you found the goal. Steps: 20. You visited 62178 Nodes
+Best First:---------------
+----------Mann----------------------------
+
+YAAY!,you found the goal. Steps: 34. You visited 149 Nodes
+----------TOOP----------------------------
+
+YAAY!,you found the goal. Steps: 46. You visited 1068 Nodes
+A Star------------------------------
+YAAY!,you found the goal. Steps: 20. You visited 6478 Nodes
+Current Puzzle:647850321
+Breadth First:-----------------

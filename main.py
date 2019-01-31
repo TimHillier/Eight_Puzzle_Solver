@@ -1,10 +1,12 @@
 #Assignment 1 for AI
-import solver,stateFinder,treeGen
+import solver,stateFinder,treeGen,output
 from anytree import RenderTree
 
 def main():
+    output.initFile()
     getPuzzle("puzzles.txt")
     print("Done")
+
 
 #i know the puzzle i submitted is not solvable, so lets check for that
 def isSolvable(puzzle):
@@ -30,12 +32,14 @@ def getPuzzle(fileName):
         #get the puzzle and turn it into a list
         content = f.readline().split()
         while content:
+            output.writeToFile("Current Puzzle:" + ''.join(content))
             print("Current Puzzle:",content)
             if(isSolvable(content)):
                 root = treeGen.generateTree(''.join(content))
                 solver.all(content,root,goal)
                 content = f.readline().split()
             else:
+                output.writeToFile("Current Puzzle: Not Solvable")
                 print("Current Puzzle: not solvable")
                 content = f.readline().split()
 main()
