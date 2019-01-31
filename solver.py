@@ -3,7 +3,7 @@ from anytree import RenderTree,Node,PreOrderIter
 from queue import *
 #solver for the puzzle
 # heuristics = ["Mann","tOOP","custom"] #the heuristcs for best first search
-heuristics = ["Mann"]
+heuristics = ["TOOP"]
 
 #runs all solvers
 def all(puzzle,parent,goal):
@@ -100,6 +100,25 @@ def calcHeuristic(listofnodes,heur):
                 bestCost = val
                 bestNode = listofnodes[newList.index(a)]
         return bestNode
+
+    elif heur == "TOOP":
+        newList = []
+        for l in listofnodes:
+            a = getName(l)
+            newList.append(list(map(int,a)))
+        for a in newList:
+            tiles = 0
+            for i in range(0,7):
+                if a[i] != i+1:
+                    tiles +=1
+            if a[8] != 0:
+                tiles += 1
+            if tiles < bestCost:
+                bestCost = tiles
+                bestNode = listofnodes[newList.index(a)]
+
+        return bestNode
+
 
 def aStar(puzzle):
     print(puzzle)
