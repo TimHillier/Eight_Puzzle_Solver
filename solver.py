@@ -7,14 +7,14 @@ heuristics = ["Mann"]
 
 #runs all solvers
 def all(puzzle,parent,goal):
-    thisTree = stateFinder.mover(puzzle, parent)
-    print("Breath First:--------------------")
-    breadFirst(thisTree, treeGen.getRoot(),goal) # this works
+    thisTree = stateFinder.mover(puzzle, parent,True)
+    # print("Breath First:--------------------")
+    # breadFirst(thisTree, treeGen.getRoot(),goal) # this works
     # aStar(thisTree)
-    # print("Best First:----------------------")
-    # for x in heuristics:
-    #     print("----------",x,"----------------------------")
-    #     bestFirst(thisTree,treeGen.getRoot(),x,goal)
+    print("Best First:----------------------")
+    for x in heuristics:
+        print("----------",x,"----------------------------")
+        bestFirst(thisTree,treeGen.getRoot(),x,goal)
 
 
 def breadFirst(BaseTree,rootNode,goal): #some whole wheat action
@@ -93,7 +93,6 @@ def calcHeuristic(listofnodes,heur):
         newList =[]
         for l in listofnodes:
             a = getName(l)
-            # print("here",type(a))
             newList.append(list(map(int, a)))
         for a in newList:
             val=(sum(abs((val-1)%3-i%3) + abs((val-1)//3 - i//3) for i, val in enumerate(a) if val))

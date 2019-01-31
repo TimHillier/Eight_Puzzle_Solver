@@ -2,7 +2,7 @@
 import treeGen
 from anytree import Node
 states = set()
-def mover(puzzle,parent,checker=False):
+def mover(puzzle,parent,checker):
     global states
     #some checks
     if isinstance(puzzle,Node):
@@ -28,11 +28,15 @@ def mover(puzzle,parent,checker=False):
     # print(states)
 
     if not checker:
+        #only use in bread
         for x in states:
             treeGen.addNode(x[:9],parent,x[-1:])
-    if checker:
+
+    elif checker:
+        #should only go in here in best first
         for x in states:
             treeGen.addNodeBest(x[:9],parent,x[-1:])
+
     return parent
 
 def getZero(puzzle):
