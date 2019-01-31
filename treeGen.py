@@ -6,8 +6,26 @@ def generateTree(puzzle):
     Root = Node(puzzle)
     return Root
 
-def addNode(node,parent):
-    Node(node,parent=parent)
+def addNode(node,parent,move):
+    #need to make sure that node is in fact a node
+    if not isinstance(node,Node):
+        node = Node(node)
+
+    if not isinstance(parent,Node):
+        parent = Node(parent)
+
+    Node(node,parent=parent,MOVE=move)
+
+
+def addNodeBest(node,parent,move):
+    #need to make sure that node is in fact a node
+    if not isinstance(node,Node):
+        node = Node(node)
+
+    if not isinstance(parent,Node):
+        parent = Node(parent)
+
+    Node(node.name,parent=parent,MOVE=move)
 
 def getRoot():
     return Root
